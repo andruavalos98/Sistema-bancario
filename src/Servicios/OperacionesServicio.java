@@ -20,8 +20,6 @@ public class OperacionesServicio {
     CuentaCorrienteServicio cuentaCorrienteServicio = new CuentaCorrienteServicio();
     CuentaCorriente cuentaCorriente = new CuentaCorriente();
     CajaDeAhorro cajaDeAhorro = new CajaDeAhorro();
-    
-
 
     public void operacionesCtaCorriente(Integer dni) {
 
@@ -35,6 +33,7 @@ public class OperacionesServicio {
 
         switch (op) {
             case 1:
+                sc.nextInt();
                 System.out.println("Ingrese la cantidad a depositar");
                 sc.nextInt();
                 double deposito = sc.nextInt();
