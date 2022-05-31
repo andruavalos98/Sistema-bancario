@@ -42,7 +42,7 @@ public class CuentaCorriente extends Cuenta {
     }
     
     public boolean depositarDineroEnSaldoDescubierto(double cantidad) {
-        if(cantidad <= 0) {
+        if(!this.alta || cantidad <= 0) {
             return false;
         }
         
@@ -53,7 +53,7 @@ public class CuentaCorriente extends Cuenta {
     
     @Override
     public boolean retirarDinero(double cantidad) {
-        if(this.saldo + this.saldoDescubierto < cantidad) {
+        if(!this.alta || this.saldo + this.saldoDescubierto < cantidad) {
             return false;
         }
         

@@ -49,6 +49,7 @@ public class SistemaBancario {
         // Debería realizarse correctamente
         if(cuenta.retirarDinero(200)) {
             System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
+            System.out.println("Fondos Actuales: $" + cuenta.getSaldo());
         } else {    
             System.out.println("Fondos insuficientes");
         }
@@ -56,6 +57,7 @@ public class SistemaBancario {
         // Debería fallar
         if(cuenta.retirarDinero(200)) {
             System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
+            System.out.println("Fondos Actuales: $" + cuenta.getSaldo());
         } else {    
             System.out.println("Fondos insuficientes");
         }
@@ -63,6 +65,8 @@ public class SistemaBancario {
         // Debería realizarse correctamente
         if(otraCuenta.retirarDinero(200)) {
             System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
+            System.out.println("Fondos Actuales: $" + otraCuenta.getSaldo());
+            System.out.println("Saldo Descubierto: $" + otraCuenta.getSaldoDescubierto());
         } else {    
             System.out.println("Fondos insuficientes");
         }
@@ -70,6 +74,8 @@ public class SistemaBancario {
         // Debería realizarse correctamente, con un mensaje extra
         if(otraCuenta.retirarDinero(200)) {
             System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
+            System.out.println("Fondos Actuales: $" + otraCuenta.getSaldo());
+            System.out.println("Saldo Descubierto: $" + otraCuenta.getSaldoDescubierto());
         } else {    
             System.out.println("Fondos insuficientes");
         }
@@ -77,8 +83,18 @@ public class SistemaBancario {
         // Debería fallar
         if(otraCuenta.retirarDinero(200)) {
             System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
+            System.out.println("Fondos Actuales: $" + otraCuenta.getSaldo());
+            System.out.println("Saldo Descubierto: $" + otraCuenta.getSaldoDescubierto());
         } else {    
             System.out.println("Fondos insuficientes");
+        }
+        
+        unaCuenta.setAlta(false);
+        
+        if(unaCuenta.depositarDinero(300)){
+            System.out.println("Deposito Exitoso");
+        } else {
+            System.out.println("Deposito Fallido");
         }
                 
 //        int op;

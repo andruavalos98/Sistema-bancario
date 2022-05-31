@@ -26,7 +26,7 @@ public class CajaDeAhorro extends Cuenta {
     
     @Override
     public boolean depositarDinero(double cantidad) {
-        if(cantidad <= 0) {
+        if(!this.alta || cantidad <= 0) {
             return false;
         }
         
@@ -37,7 +37,7 @@ public class CajaDeAhorro extends Cuenta {
     
     @Override
     public boolean retirarDinero(double cantidad) {
-        if(this.saldo < cantidad) {
+        if(!this.alta || this.saldo < cantidad) {
             return false;
         }
         
