@@ -21,10 +21,10 @@ public class CajaDeAhorroServicio {
         System.out.println("Ingrese la cantidad que va a depositar");
         deposito = sc.nextInt();
 
-        deposito = cajaDeAhorro.getSaldo() + deposito;
+        deposito = cajaDeAh                                           orro.getSaldo() + deposito;
 
         cajaDeAhorro.setSaldo(deposito);
 
     }
-
+                                                                                                                                                                                                                                                     
 }

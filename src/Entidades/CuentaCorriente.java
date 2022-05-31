@@ -29,7 +29,7 @@ public class CuentaCorriente extends Cuenta {
     
     @Override
     public String toString(){
-        return super.toString() + "\nSaldo Descubierto: " + saldoDescubierto + "\nTipo de Cuenta: Cuenta Corriente\n-------------";
+        return super.toString() + "\nSaldo Descubierto: " + saldoDescubierto + "\nTipo de Cuenta: Cuenta Corriente\n-----------------------------------------";
     }
     
     @Override
@@ -55,7 +55,7 @@ public class CuentaCorriente extends Cuenta {
     
     @Override
     public boolean retirarDinero(double cantidad) {
-        if(!this.alta || this.saldo + this.saldoDescubierto < cantidad) {
+        if(!this.alta || this.saldo + this.saldoDescubierto < cantidad || cantidad <= 0) {
             return false;
         }
         
@@ -68,7 +68,7 @@ public class CuentaCorriente extends Cuenta {
             
             System.out.println("Se uso dinero del Saldo Descubierto.");
         }
-        
+                                                 
         return true;
     }
     

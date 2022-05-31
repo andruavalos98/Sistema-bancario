@@ -22,7 +22,7 @@ public class CajaDeAhorro extends Cuenta {
    
     @Override
     public String toString(){
-        return super.toString() + "\nTipo de Cuenta: Caja de Ahorro\n-------------";
+        return super.toString() + "\nTipo de Cuenta: Caja de Ahorro\n--------------------------------------";
     }
     
     @Override
@@ -38,7 +38,7 @@ public class CajaDeAhorro extends Cuenta {
     
     @Override
     public boolean retirarDinero(double cantidad) {
-        if(!this.alta || this.saldo < cantidad) {
+        if(!this.alta || this.saldo < cantidad || cantidad <= 0) {
             return false;
         }
         

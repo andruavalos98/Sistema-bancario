@@ -6,10 +6,10 @@
 package sistema.bancario;
 
 //import Servicios.AccountManagerService;
-import Entidades.AccountManager;
 import Entidades.CajaDeAhorro;
 import Entidades.CuentaCorriente;
 import Entidades.Cuenta;
+import Test.TestCuenta;
 
 /**
  *
@@ -21,205 +21,100 @@ public class SistemaBancario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
 
-        AccountManager manager = new AccountManager();
-        
-//        manager.getCuentas().add(new CajaDeAhorro(1, "Juan"));
-//        manager.getCuentas().add(new CajaDeAhorro(2, "Pedro"));
-//        manager.getCuentas().add(new CajaDeAhorro(3, "Jorge"));
-//        manager.getCuentas().add(new CuentaCorriente(4, "Andrea"));
-//        manager.getCuentas().add(new CuentaCorriente(5, "Maria"));
-//        manager.getCuentas().add(new CuentaCorriente(6, "Ana"));
+        TestCuenta testCuenta = new TestCuenta();
 
-        Cuenta cuenta = new CajaDeAhorro(1, "Juan");
-        CajaDeAhorro unaCuenta = new CajaDeAhorro(2, "Ivan");
-        CuentaCorriente otraCuenta = new CuentaCorriente(3, "Andrea");
-
-        
-        System.out.println(cuenta);
-        System.out.println(otraCuenta);
-        
-        System.out.println("---------------------------------------------------------------------------");
-        
-        cuenta.depositarDinero(200);
-        otraCuenta.depositarDinero(200);
-        otraCuenta.depositarDineroEnSaldoDescubierto(300);
-        
-        unaCuenta.setAlta(false);
-        
-        // Debería fallar
-        if(unaCuenta.depositarDinero(300)){
-            System.out.println("Deposito Exitoso");
-        } else {
-            System.out.println("Deposito Fallido");
-        }
-
-        System.out.println(cuenta);
-        System.out.println(otraCuenta);
-        
-        System.out.println("---------------------------------------------------------------------------");
-
-        // Debería realizarse correctamente
-        if(cuenta.retirarDinero(200)) {
-            System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
-            System.out.println("Fondos Actuales: $" + cuenta.getSaldo());
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        
-        // Debería fallar
-        if(cuenta.retirarDinero(200)) {
-            System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
-            System.out.println("Fondos Actuales: $" + cuenta.getSaldo());
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-
-        // Debería realizarse correctamente
-        if(otraCuenta.retirarDinero(200)) {
-            System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
-            System.out.println("Fondos Actuales: $" + otraCuenta.getSaldo());
-            System.out.println("Saldo Descubierto: $" + otraCuenta.getSaldoDescubierto());
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        
-        // Debería realizarse correctamente, con un mensaje extra
-        if(otraCuenta.retirarDinero(200)) {
-            System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
-            System.out.println("Fondos Actuales: $" + otraCuenta.getSaldo());
-            System.out.println("Saldo Descubierto: $" + otraCuenta.getSaldoDescubierto());
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        
-        // Debería fallar
-        if(otraCuenta.retirarDinero(200)) {
-            System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
-            System.out.println("Fondos Actuales: $" + otraCuenta.getSaldo());
-            System.out.println("Saldo Descubierto: $" + otraCuenta.getSaldoDescubierto());
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        
-        System.out.println("---------------------------------------------------------------------------");
-        
-        cuenta.depositarDinero(500);
-
-        System.out.println(cuenta);
-        System.out.println(otraCuenta);
-        
-        // Deberia realizarse exitosamente
-        if(cuenta.transferirDinero(otraCuenta, 200)) {
-            System.out.println("Transferencia exitosa!");
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        System.out.println(cuenta);
-        System.out.println(otraCuenta);
-        
-        // Deberia fallar
-        if(cuenta.transferirDinero(otraCuenta, 600)) {
-            System.out.println("Transferencia exitosa!");
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        System.out.println(cuenta);
-        System.out.println(otraCuenta);
-        
-        // Deberia realizarse exitosamente
-        if(otraCuenta.transferirDinero(cuenta, 200)) {
-            System.out.println("Transferencia exitosa!");
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        System.out.println(cuenta);
-        System.out.println(otraCuenta);
-            
-        Cuenta siguienteCuenta = new CajaDeAhorro(5, "Maria");
-        
-        // Deberia realizarse exitosamente
-        if(cuenta.transferirDinero(siguienteCuenta, 200)) {
-            System.out.println("\n \n Transferencia exitosa! entre: ");
-        } else {    
-            System.out.println("Fondos insuficientes");
-        }
-        System.out.println(cuenta);
-        System.out.println(siguienteCuenta);
-        
-        // Deberia Fallar
-        if(cuenta.transferirDinero(unaCuenta, 200)) {
-            System.out.println("\n \n Transferencia exitosa! entre: ");
-        } else {    
-            System.out.println("Transferencia fallida");
-        }
-        System.out.println(cuenta);
-        System.out.println(unaCuenta);
-
-
-        Cuenta cuentaDelMismoTitular = new CuentaCorriente(6, "Juan");
-        
-        // No debería añadir un cargo
-        if(cuenta.transferirDinero(cuentaDelMismoTitular, 200)) {
-            System.out.println("\n \n Transferencia exitosa! entre: ");
-        } else {    
-            System.out.println("Transferencia fallida");
-        }
-        System.out.println(cuenta);
-        System.out.println(cuentaDelMismoTitular);
+        // Pruebo el polimorfismo
+        Cuenta unaCajaDeAhorroDeJuan = new CajaDeAhorro(1, "Juan");
+        CajaDeAhorro otraCajaDeAhorro = new CajaDeAhorro(2, "Ivan");
+        CuentaCorriente cuentaCorriente = new CuentaCorriente(3, "Andrea");
+        //CUENTA INHABILITADA
+        Cuenta cuentaInhabilitada = new CajaDeAhorro(5, "Maria");
+        cuentaInhabilitada.setAlta(false);
+         //UNA CUENTA CORRIENTE VACIA TOTALMENTE
+        Cuenta unaCuentaCorrienteDeJuan = new CuentaCorriente(6, "Juan");
+        //UNA CUENTA CORRIENTE QUE SOLO TIENE SALDO DESCUBIERTO
+        CuentaCorriente unaCuentaCorrienteDePedro = new CuentaCorriente(7, "Pedro");
+       
         
 
-//        int op;
-//        String titular;
-//        Integer dni;
-//
-//        do {
-//            System.out.println("\n ------ Bienvenido al Sistema Bancario! ------ \n");
-//            System.out.println("Que desea hacer? \n");
-//
-//            System.out.println("1. Acceder");
-//            System.out.println("2. Crear una cuenta nueva");
-//            System.out.println("3. Listar todas las cuenatas");
-//            System.out.println("4. Salir \n");
-//
-//            op = sc.nextInt();
-//
-//            switch (op) {
-//                case 1:
-//                    sc.nextLine();
-//
-//                    System.out.print("Ingrese el DNI del titular");
-//                    dni = sc.nextInt();
-//
-//                    ams.ingresar(dni);
-//
-//                    break;
-//
-//                case 2:
-//                    sc.nextLine();
-//                    System.out.print("Ingrese el nombre del titular de la cuenta: ");
-//                    titular = sc.nextLine();
-//
-//                    System.out.print("Ingrese el DNI del titular: ");
-//                    dni = sc.nextInt();
-//
-//                    ams.crearCuenta(titular, dni);
-//
-//                    break;
-//
-//                case 3:
-//                    ams.listarCuentas();
-//                    break;
-//                    
-//                case 4: 
-//                    break;
-//
-//                default:
-//                    System.out.println("Opcion no valida. Intente de Nuevo");
-//
-//            }
-//        } while (op != 4);
+//        PROBANDO CREAR CUENTAS
+        System.out.println("++++++++++++++++++PROBANDO CREAR CUENTAS++++++++++++++++++\n");
+        System.out.println(unaCajaDeAhorroDeJuan);
+        System.out.println(otraCajaDeAhorro);
+        System.out.println(cuentaCorriente);
+        System.out.println(cuentaInhabilitada);
+        System.out.println(unaCuentaCorrienteDeJuan);
+
+//  ----------------------------------------------------------------------
+        System.out.println("\n\n++++++++++++++++++PROBANDO DEPOSITOS++++++++++++++++++\n");
+
+        System.out.println("\t A UNA CAJA DE AHORRO");
+        TestCuenta.pruebaDeposito(unaCajaDeAhorroDeJuan, 10000);
+        System.out.println("\t A LA MISMA CUENTA PARA VER QUE SE SUMEN");
+        TestCuenta.pruebaDeposito(unaCajaDeAhorroDeJuan, 500);
+        System.out.println("\t A UNA CUENTA CORRIENTE");
+        TestCuenta.pruebaDeposito(cuentaCorriente, 5000);
+        System.out.println("\t AL SALDO DESCUBUERTO DE UNA CUENTA CORRIENTE");
+        TestCuenta.pruebaDepositoSaldoDescubierto(cuentaCorriente, 500);
+        System.out.println("\t A UNA CUENTA INHABILITADA");
+        TestCuenta.pruebaDeposito(cuentaInhabilitada, 500);
+        System.out.println("\t INTENTO DEPOSITAR SALDO NEGATIVO");
+        TestCuenta.pruebaDeposito(otraCajaDeAhorro, -500);
+        System.out.println("\t SOLO DEPOSITO DE SALDO DESCUBIERTO");
+        TestCuenta.pruebaDepositoSaldoDescubierto(unaCuentaCorrienteDePedro, 500);
+//----------------------------------------------------------------------------
+        System.out.println("\n\n++++++++++++++++++PROBANDO RETIROS DE DINERO++++++++++++++++++\n");
+
+        System.out.println("\t A UNA CAJA DE AHORRO CON SUFICIENTE SALDO");
+        TestCuenta.pruebaRetiro(unaCajaDeAhorroDeJuan, 200);
+        System.out.println("\t A UNA CAJA DE AHORRO CON SALDO INSUFICIENTE");
+        TestCuenta.pruebaRetiro(otraCajaDeAhorro, 800);
+        System.out.println("\t A UNA CUENTA CORRIENTE CON SALDO SUFICIENTE");
+        TestCuenta.pruebaRetiroCtaCorriente(cuentaCorriente, 100);
+        System.out.println("\t A UNA CUENTA CORRIENTE CON SALDO INSUFICIENTE PERO CON SALDO DESCUBIERTO SUFUCIENTE");
+        TestCuenta.pruebaRetiroCtaCorriente(unaCuentaCorrienteDePedro, 300);
+        System.out.println("\t A UNA CUENTA CORRIENTE VACIA TOTALMENTE");
+        TestCuenta.pruebaRetiro(unaCuentaCorrienteDeJuan, 900);
+        System.out.println("\t A UNA CUENTA INHABILITADA");
+        TestCuenta.pruebaRetiro(cuentaInhabilitada, 700);
+        System.out.println("\t INTENTO RETIRAR UN MONTO NEGATIVO");
+        TestCuenta.pruebaRetiro(otraCajaDeAhorro, -100);
+        TestCuenta.pruebaRetiro(cuentaCorriente, -100);
+        
+        
+        System.out.println("\n\n++++++++++++++++++PROBANDO TRANSFERENCIAS DE DINERO++++++++++++++++++\n");
+        
+        System.out.println("\t TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (caja de ahorro a cuenta corriente)");
+        TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, unaCuentaCorrienteDePedro, 600);
+        System.out.println("\t\n TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (cuenta corriente a caja de ahorro)");
+        TestCuenta.pruebaTransferencia(cuentaCorriente, otraCajaDeAhorro, 20);
+        
+        System.out.println("\t\n TRANFERENCIAS A CUENTAS DE IGUAL TIPO Y DE DISTINTO TITULAR ");
+        TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, otraCajaDeAhorro, 100);
+        
+        System.out.println("\t\n TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE IGUAL TITULAR ");
+        TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, unaCuentaCorrienteDeJuan, 300);
+
+        System.out.println("\t\n TRANFERENCIAS A CUENTA INHABILITADA A CUENTA HABILITADA");
+        TestCuenta.pruebaTransferencia(cuentaInhabilitada, cuentaCorriente, 100);
+        
+        System.out.println("\t\n TRANFERENCIAS DE CUENTA HABILITADA A CUENTA INHABILITADA");
+        TestCuenta.pruebaTransferencia(cuentaCorriente, cuentaInhabilitada, 100);
+        
+        System.out.println("\t\n TRANFERENCIAS DE UN MONTO NEGATIVO");
+        TestCuenta.pruebaTransferencia(cuentaCorriente, unaCajaDeAhorroDeJuan, -100);
+        
+        System.out.println("\t\n TRANFERENCIAS DESDE UNA CUENTA CON MONTO INSUFICIENTE");
+        TestCuenta.pruebaTransferencia(unaCuentaCorrienteDeJuan, unaCuentaCorrienteDePedro, 1000);
+        
+        System.out.println("\t\n TRANFERENCIAS DESDE UNA CUENTA CORRIENTE SIN SALDO PERO CON SALDO DESCUBIERTO SUFICIENTE");
+        TestCuenta.pruebaTransferencia(unaCuentaCorrienteDePedro, unaCuentaCorrienteDeJuan, 100);
+        
+        
+        System.out.println("\t\n TRANFERENCIAS DESDE UNA CUENTA A OTRA CUENTA NULA");
+        TestCuenta.pruebaTransferencia(cuentaCorriente, null, 0);
+        
 
     }
 
