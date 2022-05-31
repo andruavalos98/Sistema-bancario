@@ -25,15 +25,23 @@ public class SistemaBancario {
 
         AccountManager manager = new AccountManager();
         
-        manager.getCuentas().add(new CajaDeAhorro(1, "Juan", 300.0));
-        manager.getCuentas().add(new CajaDeAhorro(2, "Pedro", 300.0));
-        manager.getCuentas().add(new CajaDeAhorro(3, "Jorge", 300.0));
-        manager.getCuentas().add(new CuentaCorriente(4, "Andrea", 300.0, 200.0));
-        manager.getCuentas().add(new CuentaCorriente(5, "Maria", 300.0, 200.0));
-        manager.getCuentas().add(new CuentaCorriente(6, "Ana", 300.0, 200.0));
+//        manager.getCuentas().add(new CajaDeAhorro(1, "Juan"));
+//        manager.getCuentas().add(new CajaDeAhorro(2, "Pedro"));
+//        manager.getCuentas().add(new CajaDeAhorro(3, "Jorge"));
+//        manager.getCuentas().add(new CuentaCorriente(4, "Andrea"));
+//        manager.getCuentas().add(new CuentaCorriente(5, "Maria"));
+//        manager.getCuentas().add(new CuentaCorriente(6, "Ana"));
 
-        Cuenta cuenta = manager.obtenerCuentaPorNroCuenta(1);
-        Cuenta otraCuenta = manager.obtenerCuentaPorNroCuenta(4);
+        Cuenta cuenta = new CajaDeAhorro(1, "Juan");
+        CajaDeAhorro unaCuenta = new CajaDeAhorro(2, "Ivan");
+        CuentaCorriente otraCuenta = new CuentaCorriente(3, "Andrea");
+
+        System.out.println(cuenta);
+        System.out.println(otraCuenta);
+        
+        cuenta.depositarDinero(200);
+        otraCuenta.depositarDinero(200);
+        otraCuenta.depositarDineroEnSaldoDescubierto(300);
 
         System.out.println(cuenta);
         System.out.println(otraCuenta);

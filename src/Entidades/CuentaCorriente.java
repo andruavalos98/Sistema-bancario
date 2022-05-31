@@ -17,21 +17,12 @@ public class CuentaCorriente extends Cuenta {
         super();
     }
 
-    public CuentaCorriente(Integer nroCuenta, String titular, Double saldo) {
-        super(nroCuenta, titular, saldo);
-    }
-    
-    public CuentaCorriente(Integer nroCuenta, String titular, Double saldo, Double saldoDescubierto) {
-        super(nroCuenta, titular, saldo);
-        this.saldoDescubierto = saldoDescubierto;
+    public CuentaCorriente(Integer nroCuenta, String titular) {
+        super(nroCuenta, titular);
     }
     
     public Double getSaldoDescubierto() {
         return saldoDescubierto;
-    }
-
-    public void setSaldoDescubierto(Double saldoDescubierto) {
-        this.saldoDescubierto = saldoDescubierto;
     }
     
     @Override
@@ -40,7 +31,28 @@ public class CuentaCorriente extends Cuenta {
     }
     
     @Override
-    public boolean retirarDinero(int cantidad) {
+    public boolean depositarDinero(double cantidad) {
+        if(cantidad <= 0) {
+            return false;
+        }
+        
+        this.saldo += cantidad;
+        
+        return true;
+    }
+    
+    public boolean depositarDineroEnSaldoDescubierto(double cantidad) {
+        if(cantidad <= 0) {
+            return false;
+        }
+        
+        this.saldoDescubierto += cantidad;
+        
+        return true;
+    }
+    
+    @Override
+    public boolean retirarDinero(double cantidad) {
         if(this.saldo + this.saldoDescubierto < cantidad) {
             return false;
         }

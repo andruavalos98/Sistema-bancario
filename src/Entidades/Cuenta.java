@@ -19,34 +19,21 @@ public abstract class Cuenta {
     public Cuenta() {
     }
 
-    public Cuenta(Integer nroCuenta, String titular, Double saldo) {
+    public Cuenta(Integer nroCuenta, String titular) {
         this.nroCuenta = nroCuenta;
         this.titular = titular;
-        this.saldo = saldo;
     }
 
     public Double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
-
     public Integer getNroCuenta() {
         return nroCuenta;
     }
 
-    public void setNroCuenta(Integer nroCuenta) {
-        this.nroCuenta = nroCuenta;
-    }
-
     public String getTitular() {
         return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
     }
 
     public boolean isAlta() {
@@ -62,6 +49,7 @@ public abstract class Cuenta {
         return "-------------\nTitular: " + titular + "\nN° Cuenta: " + nroCuenta + "\nSaldo: " + saldo;
     }
     
-    public abstract boolean retirarDinero(int cantidad);
-    
+    public abstract boolean depositarDinero(double cantidad);
+    public abstract boolean retirarDinero(double cantidad);
+
 }

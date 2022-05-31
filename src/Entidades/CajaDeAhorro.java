@@ -15,8 +15,8 @@ public class CajaDeAhorro extends Cuenta {
         super();
     }
     
-    public CajaDeAhorro(Integer nroCuenta, String titular, Double saldo) {
-        super(nroCuenta, titular, saldo);
+    public CajaDeAhorro(Integer nroCuenta, String titular) {
+        super(nroCuenta, titular);
     }
    
     @Override
@@ -25,7 +25,18 @@ public class CajaDeAhorro extends Cuenta {
     }
     
     @Override
-    public boolean retirarDinero(int cantidad) {
+    public boolean depositarDinero(double cantidad) {
+        if(cantidad <= 0) {
+            return false;
+        }
+        
+        this.saldo += cantidad;
+        
+        return true;
+    }
+    
+    @Override
+    public boolean retirarDinero(double cantidad) {
         if(this.saldo < cantidad) {
             return false;
         }
