@@ -15,10 +15,12 @@ public class CuentaCorriente extends Cuenta {
 
     public CuentaCorriente() {
         super();
+        this.porcentajeCargoExtra = 0.03;
     }
 
     public CuentaCorriente(Integer nroCuenta, String titular) {
         super(nroCuenta, titular);
+        this.porcentajeCargoExtra = 0.03;
     }
     
     public Double getSaldoDescubierto() {

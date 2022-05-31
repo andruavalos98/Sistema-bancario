@@ -36,16 +36,30 @@ public class SistemaBancario {
         CajaDeAhorro unaCuenta = new CajaDeAhorro(2, "Ivan");
         CuentaCorriente otraCuenta = new CuentaCorriente(3, "Andrea");
 
+        
         System.out.println(cuenta);
         System.out.println(otraCuenta);
+        
+        System.out.println("---------------------------------------------------------------------------");
         
         cuenta.depositarDinero(200);
         otraCuenta.depositarDinero(200);
         otraCuenta.depositarDineroEnSaldoDescubierto(300);
+        
+        unaCuenta.setAlta(false);
+        
+        // Debería fallar
+        if(unaCuenta.depositarDinero(300)){
+            System.out.println("Deposito Exitoso");
+        } else {
+            System.out.println("Deposito Fallido");
+        }
 
         System.out.println(cuenta);
         System.out.println(otraCuenta);
         
+        System.out.println("---------------------------------------------------------------------------");
+
         // Debería realizarse correctamente
         if(cuenta.retirarDinero(200)) {
             System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
@@ -89,14 +103,73 @@ public class SistemaBancario {
             System.out.println("Fondos insuficientes");
         }
         
-        unaCuenta.setAlta(false);
+        System.out.println("---------------------------------------------------------------------------");
         
-        if(unaCuenta.depositarDinero(300)){
-            System.out.println("Deposito Exitoso");
-        } else {
-            System.out.println("Deposito Fallido");
+        cuenta.depositarDinero(500);
+
+        System.out.println(cuenta);
+        System.out.println(otraCuenta);
+        
+        // Deberia realizarse exitosamente
+        if(cuenta.transferirDinero(otraCuenta, 200)) {
+            System.out.println("Transferencia exitosa!");
+        } else {    
+            System.out.println("Fondos insuficientes");
         }
-                
+        System.out.println(cuenta);
+        System.out.println(otraCuenta);
+        
+        // Deberia fallar
+        if(cuenta.transferirDinero(otraCuenta, 600)) {
+            System.out.println("Transferencia exitosa!");
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+        System.out.println(cuenta);
+        System.out.println(otraCuenta);
+        
+        // Deberia realizarse exitosamente
+        if(otraCuenta.transferirDinero(cuenta, 200)) {
+            System.out.println("Transferencia exitosa!");
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+        System.out.println(cuenta);
+        System.out.println(otraCuenta);
+            
+        Cuenta siguienteCuenta = new CajaDeAhorro(5, "Maria");
+        
+        // Deberia realizarse exitosamente
+        if(cuenta.transferirDinero(siguienteCuenta, 200)) {
+            System.out.println("\n \n Transferencia exitosa! entre: ");
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+        System.out.println(cuenta);
+        System.out.println(siguienteCuenta);
+        
+        // Deberia Fallar
+        if(cuenta.transferirDinero(unaCuenta, 200)) {
+            System.out.println("\n \n Transferencia exitosa! entre: ");
+        } else {    
+            System.out.println("Transferencia fallida");
+        }
+        System.out.println(cuenta);
+        System.out.println(unaCuenta);
+
+
+        Cuenta cuentaDelMismoTitular = new CuentaCorriente(6, "Juan");
+        
+        // No debería añadir un cargo
+        if(cuenta.transferirDinero(cuentaDelMismoTitular, 200)) {
+            System.out.println("\n \n Transferencia exitosa! entre: ");
+        } else {    
+            System.out.println("Transferencia fallida");
+        }
+        System.out.println(cuenta);
+        System.out.println(cuentaDelMismoTitular);
+        
+
 //        int op;
 //        String titular;
 //        Integer dni;

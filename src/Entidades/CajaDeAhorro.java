@@ -10,13 +10,14 @@ package Entidades;
  * @author andru
  */
 public class CajaDeAhorro extends Cuenta {
-
     public CajaDeAhorro() {
         super();
+        this.porcentajeCargoExtra = 0.015;
     }
     
     public CajaDeAhorro(Integer nroCuenta, String titular) {
         super(nroCuenta, titular);
+        this.porcentajeCargoExtra = 0.015;
     }
    
     @Override

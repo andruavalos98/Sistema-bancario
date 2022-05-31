@@ -15,7 +15,8 @@ public abstract class Cuenta {
     protected Integer nroCuenta;
     protected String titular;
     protected boolean alta = true;
-
+    protected double porcentajeCargoExtra;
+    
     public Cuenta() {
     }
 
@@ -51,5 +52,24 @@ public abstract class Cuenta {
     
     public abstract boolean depositarDinero(double cantidad);
     public abstract boolean retirarDinero(double cantidad);
-
+    
+    public boolean transferirDinero(Cuenta cuenta, double cantidad) {
+        // Falla si alguna de las cuentas esta inhabilitada
+        if(!this.isAlta() || !cuenta.isAlta()) {
+            return false;
+        }
+        
+        // Comparo el tipo y el titular de la cuenta a la que recibirá dinero
+        // con la cuenta que lo emitira. Si son distintos tipos y distintos titulares, agrego el cargo extra
+        // NOTA: Por convención, supongo que dos cuentas tienen el mismo titular, si están al mismo nombre
+        if(
+            cuenta.getClass() != this.getClass() &&
+            !cuenta.getTitular().equals(this.titular)
+        ) {
+            cantidad += cantidad * this.porcentajeCargoExtra;
+        }
+        
+        // Realizo la transferencia, retorna false si algo falla
+        return this.retirarDinero(cantidad) && cuenta.depositarDinero(cantidad);
+    }
 }
