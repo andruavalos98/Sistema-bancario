@@ -78,7 +78,7 @@ public abstract class Cuenta {
         if (cuenta.getClass() != this.getClass()
                 && !cuenta.getTitular().equals(this.titular)) {
             cantidadARetirar = cantidad * (1 + this.porcentajeCargoExtra);
-            System.out.println("Cargo aplicado: " + cantidad * (1 + cuenta.getPorcentajeCargoExtra()) + " (" + 100 * cuenta.getPorcentajeCargoExtra() + "%" + ")");
+            System.out.println("Cargo aplicado: " + cantidad * (1 + this.getPorcentajeCargoExtra()) + " (" + 100 * this.getPorcentajeCargoExtra() + "%" + ")");
 
         }
 

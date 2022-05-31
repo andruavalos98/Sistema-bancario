@@ -23,6 +23,8 @@ public class SistemaBancario {
      */
     public static void main(String[] args) {
 
+        String ANSI_CYAN = "\u001B[36m";
+
         TestCuenta testCuenta = new TestCuenta();
         AccountManager accountManager = new AccountManager();
 
@@ -34,7 +36,7 @@ public class SistemaBancario {
         Cuenta cuentaInhabilitada = new CajaDeAhorro(5, "Maria de las Rosas");
         cuentaInhabilitada.setAlta(false);
         //UNA CUENTA CORRIENTE VACIA TOTALMENTE
-        Cuenta unaCuentaCorrienteDeJuan = new CuentaCorriente(6, "Pablo Juan Martinez");
+        Cuenta unaCuentaCorrienteDeJuan = new CuentaCorriente(6, "Juan Pablo Pepe del Valle");
         //UNA CUENTA CORRIENTE QUE SOLO TIENE SALDO DESCUBIERTO
         CuentaCorriente unaCuentaCorrienteDePedro = new CuentaCorriente(7, "Pedro Apaza de las comarcas");
 
@@ -44,6 +46,8 @@ public class SistemaBancario {
         accountManager.getCuentas().add(cuentaInhabilitada);
         accountManager.getCuentas().add(unaCuentaCorrienteDeJuan);
         accountManager.getCuentas().add(unaCuentaCorrienteDePedro);
+
+        System.out.println(ANSI_CYAN + "TP1 - AVALOS ANDREA LUCIANA - LAB JAVA NEORIS \n \n" + ANSI_CYAN);
 
 //        PROBANDO CREAR CUENTAS
         System.out.println("++++++++++++++++++PROBANDO CREAR CUENTAS++++++++++++++++++\n");
@@ -92,7 +96,7 @@ public class SistemaBancario {
         System.out.println("\n\n++++++++++++++++++PROBANDO TRANSFERENCIAS DE DINERO++++++++++++++++++\n");
 
         System.out.println("\t ***TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (caja de ahorro a cuenta corriente)");
-        TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, unaCuentaCorrienteDePedro, 600);
+        TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, cuentaCorriente, 600);
         System.out.println("\t\n ***TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (cuenta corriente a caja de ahorro)");
         TestCuenta.pruebaTransferencia(cuentaCorriente, otraCajaDeAhorro, 20);
 
@@ -119,7 +123,7 @@ public class SistemaBancario {
 
         System.out.println("\t\n ***TRANFERENCIAS DESDE UNA CUENTA A OTRA CUENTA NULA");
         TestCuenta.pruebaTransferencia(cuentaCorriente, null, 0);
-        
+
         System.out.println("\n\n++++++++++++++++++LISTA DE CUENTAS APTAS PARA PRESTAMO++++++++++++++++++\n");
 
         accountManager
@@ -128,6 +132,12 @@ public class SistemaBancario {
 
         System.out.println("\n\n++++++++++++++++++ HACKEOS ++++++++++++++++++\n");
         System.out.print("\nHAY CUENTAS HACKEABLES? ");
+        System.out.println(accountManager.algunaCuentaPuedeSerHackeada());
+
+        System.out.println("\nSaco a la cuenta hackeable:");
+        accountManager.getCuentas().remove(unaCajaDeAhorroDeJuan);
+        System.out.print("\nHAY CUENTAS HACKEABLES? ");
+
         System.out.println(accountManager.algunaCuentaPuedeSerHackeada());
 
     }
