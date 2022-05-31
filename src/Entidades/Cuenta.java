@@ -11,6 +11,7 @@ package Entidades;
  */
 public abstract class Cuenta {
     
+    
     protected Double saldo = 0.0;
     protected Integer nroCuenta;
     protected String titular;
@@ -90,4 +91,7 @@ public abstract class Cuenta {
         // Realizo la transferencia, retorna false si algo falla
         return this.retirarDinero(cantidadARetirar) && cuenta.depositarDinero(cantidad);
     }
+    
+         
+
 }

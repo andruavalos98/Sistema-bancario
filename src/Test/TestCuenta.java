@@ -21,7 +21,6 @@ public class TestCuenta {
         }
         
         if(cuenta.isAlta() == false || otraCuenta.isAlta() == false){
-            
             System.out.println("ERROR. Una de las cuentas esta inhabilitada");
             return;
         }
