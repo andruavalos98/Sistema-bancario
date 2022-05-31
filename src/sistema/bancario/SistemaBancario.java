@@ -27,14 +27,14 @@ public class SistemaBancario {
         AccountManager accountManager = new AccountManager();
 
         // Pruebo el polimorfismo
-        Cuenta unaCajaDeAhorroDeJuan = new CajaDeAhorro(4, "Juan Pablo Pepe!");
-        CajaDeAhorro otraCajaDeAhorro = new CajaDeAhorro(2, "Ivancho Carancho Cara de Chancho");
+        Cuenta unaCajaDeAhorroDeJuan = new CajaDeAhorro(4, "Juan Pablo Pepe del Valle");
+        CajaDeAhorro otraCajaDeAhorro = new CajaDeAhorro(2, "Jose Maria del Rosario");
         CuentaCorriente cuentaCorriente = new CuentaCorriente(3, "Andrea Arevalo de los valles Calchaquies");
         //CUENTA INHABILITADA
         Cuenta cuentaInhabilitada = new CajaDeAhorro(5, "Maria de las Rosas");
         cuentaInhabilitada.setAlta(false);
         //UNA CUENTA CORRIENTE VACIA TOTALMENTE
-        Cuenta unaCuentaCorrienteDeJuan = new CuentaCorriente(6, "Juan Pablo Pepe!");
+        Cuenta unaCuentaCorrienteDeJuan = new CuentaCorriente(6, "Pablo Juan Martinez");
         //UNA CUENTA CORRIENTE QUE SOLO TIENE SALDO DESCUBIERTO
         CuentaCorriente unaCuentaCorrienteDePedro = new CuentaCorriente(7, "Pedro Apaza de las comarcas");
 
@@ -73,58 +73,60 @@ public class SistemaBancario {
 //----------------------------------------------------------------------------
         System.out.println("\n\n++++++++++++++++++PROBANDO RETIROS DE DINERO++++++++++++++++++\n");
 
-        System.out.println("\t A UNA CAJA DE AHORRO CON SUFICIENTE SALDO");
+        System.out.println("\t ***A UNA CAJA DE AHORRO CON SUFICIENTE SALDO");
         TestCuenta.pruebaRetiro(unaCajaDeAhorroDeJuan, 200);
-        System.out.println("\t A UNA CAJA DE AHORRO CON SALDO INSUFICIENTE");
+        System.out.println("\t ***A UNA CAJA DE AHORRO CON SALDO INSUFICIENTE");
         TestCuenta.pruebaRetiro(otraCajaDeAhorro, 800);
-        System.out.println("\t A UNA CUENTA CORRIENTE CON SALDO SUFICIENTE");
+        System.out.println("\t ***A UNA CUENTA CORRIENTE CON SALDO SUFICIENTE");
         TestCuenta.pruebaRetiroCtaCorriente(cuentaCorriente, 100);
-        System.out.println("\t A UNA CUENTA CORRIENTE CON SALDO INSUFICIENTE PERO CON SALDO DESCUBIERTO SUFUCIENTE");
+        System.out.println("\t ***A UNA CUENTA CORRIENTE CON SALDO INSUFICIENTE PERO CON SALDO DESCUBIERTO SUFUCIENTE");
         TestCuenta.pruebaRetiroCtaCorriente(unaCuentaCorrienteDePedro, 300);
-        System.out.println("\t A UNA CUENTA CORRIENTE VACIA TOTALMENTE");
+        System.out.println("\t ***A UNA CUENTA CORRIENTE VACIA TOTALMENTE");
         TestCuenta.pruebaRetiro(unaCuentaCorrienteDeJuan, 900);
-        System.out.println("\t A UNA CUENTA INHABILITADA");
+        System.out.println("\t ***A UNA CUENTA INHABILITADA");
         TestCuenta.pruebaRetiro(cuentaInhabilitada, 700);
-        System.out.println("\t INTENTO RETIRAR UN MONTO NEGATIVO");
+        System.out.println("\t ***INTENTO RETIRAR UN MONTO NEGATIVO");
         TestCuenta.pruebaRetiro(otraCajaDeAhorro, -100);
         TestCuenta.pruebaRetiro(cuentaCorriente, -100);
 
         System.out.println("\n\n++++++++++++++++++PROBANDO TRANSFERENCIAS DE DINERO++++++++++++++++++\n");
 
-        System.out.println("\t TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (caja de ahorro a cuenta corriente)");
+        System.out.println("\t ***TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (caja de ahorro a cuenta corriente)");
         TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, unaCuentaCorrienteDePedro, 600);
-        System.out.println("\t\n TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (cuenta corriente a caja de ahorro)");
+        System.out.println("\t\n ***TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE DISTINTO TITULAR (cuenta corriente a caja de ahorro)");
         TestCuenta.pruebaTransferencia(cuentaCorriente, otraCajaDeAhorro, 20);
 
-        System.out.println("\t\n TRANFERENCIAS A CUENTAS DE IGUAL TIPO Y DE DISTINTO TITULAR ");
+        System.out.println("\t\n ***TRANFERENCIAS A CUENTAS DE IGUAL TIPO Y DE DISTINTO TITULAR ");
         TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, otraCajaDeAhorro, 100);
 
-        System.out.println("\t\n TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE IGUAL TITULAR ");
+        System.out.println("\t\n ***TRANFERENCIAS A CUENTAS DE DISTINTO TIPO Y DE IGUAL TITULAR ");
         TestCuenta.pruebaTransferencia(unaCajaDeAhorroDeJuan, unaCuentaCorrienteDeJuan, 300);
 
-        System.out.println("\t\n TRANFERENCIAS A CUENTA INHABILITADA A CUENTA HABILITADA");
+        System.out.println("\t\n ***TRANFERENCIAS A CUENTA INHABILITADA A CUENTA HABILITADA");
         TestCuenta.pruebaTransferencia(cuentaInhabilitada, cuentaCorriente, 100);
 
-        System.out.println("\t\n TRANFERENCIAS DE CUENTA HABILITADA A CUENTA INHABILITADA");
+        System.out.println("\t\n ***TRANFERENCIAS DE CUENTA HABILITADA A CUENTA INHABILITADA");
         TestCuenta.pruebaTransferencia(cuentaCorriente, cuentaInhabilitada, 100);
 
-        System.out.println("\t\n TRANFERENCIAS DE UN MONTO NEGATIVO");
+        System.out.println("\t\n ***TRANFERENCIAS DE UN MONTO NEGATIVO");
         TestCuenta.pruebaTransferencia(cuentaCorriente, unaCajaDeAhorroDeJuan, -100);
 
-        System.out.println("\t\n TRANFERENCIAS DESDE UNA CUENTA CON MONTO INSUFICIENTE");
+        System.out.println("\t\n ***TRANFERENCIAS DESDE UNA CUENTA CON MONTO INSUFICIENTE");
         TestCuenta.pruebaTransferencia(unaCuentaCorrienteDeJuan, unaCuentaCorrienteDePedro, 1000);
 
-        System.out.println("\t\n TRANFERENCIAS DESDE UNA CUENTA CORRIENTE SIN SALDO PERO CON SALDO DESCUBIERTO SUFICIENTE");
+        System.out.println("\t\n ***TRANFERENCIAS DESDE UNA CUENTA CORRIENTE SIN SALDO PERO CON SALDO DESCUBIERTO SUFICIENTE");
         TestCuenta.pruebaTransferencia(unaCuentaCorrienteDePedro, unaCuentaCorrienteDeJuan, 100);
 
-        System.out.println("\t\n TRANFERENCIAS DESDE UNA CUENTA A OTRA CUENTA NULA");
+        System.out.println("\t\n ***TRANFERENCIAS DESDE UNA CUENTA A OTRA CUENTA NULA");
         TestCuenta.pruebaTransferencia(cuentaCorriente, null, 0);
+        
         System.out.println("\n\n++++++++++++++++++LISTA DE CUENTAS APTAS PARA PRESTAMO++++++++++++++++++\n");
 
         accountManager
                 .obtenerTitularesAptosParaPrestamo()
                 .forEach(cuenta -> System.out.println(cuenta.getTitular().toUpperCase()));
 
+        System.out.println("\n\n++++++++++++++++++ HACKEOS ++++++++++++++++++\n");
         System.out.print("\nHAY CUENTAS HACKEABLES? ");
         System.out.println(accountManager.algunaCuentaPuedeSerHackeada());
 

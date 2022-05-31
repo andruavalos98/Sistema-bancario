@@ -10,14 +10,13 @@ package Entidades;
  * @author andru
  */
 public abstract class Cuenta {
-    
-    
+
     protected Double saldo = 0.0;
     protected Integer nroCuenta;
     protected String titular;
     protected boolean alta = true;
     protected double porcentajeCargoExtra;
-    
+
     public Cuenta() {
     }
 
@@ -53,45 +52,38 @@ public abstract class Cuenta {
     public void setPorcentajeCargoExtra(double porcentajeCargoExtra) {
         this.porcentajeCargoExtra = porcentajeCargoExtra;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Titular: " + titular + "\nN° Cuenta: " + nroCuenta + "\nSaldo: " + saldo;
     }
-    
+
     public abstract boolean depositarDinero(double cantidad);
+
     public abstract boolean retirarDinero(double cantidad);
-    
+
     public boolean transferirDinero(Cuenta cuenta, double cantidad) {
         // Falla si la cuenta a transferir es nula o alguna de las cuentas esta inhabilitada
-        if(
-            cuenta == null ||
-            !this.isAlta() ||
-            !cuenta.isAlta()
-        ) {
+        if (cuenta == null
+                || !this.isAlta()
+                || !cuenta.isAlta()) {
             return false;
         }
-        
+
         double cantidadARetirar = cantidad;
-        
+
         // Comparo el tipo y el titular de la cuenta a la que recibirá dinero
         // con la cuenta que lo emitira. Si son distintos tipos y distintos titulares, agrego el cargo extra
         // NOTA: Por convención, supongo que dos cuentas tienen el mismo titular, si están al mismo nombre
-        if(
-            cuenta.getClass() != this.getClass() &&
-            !cuenta.getTitular().equals(this.titular)
-        ) {
+        if (cuenta.getClass() != this.getClass()
+                && !cuenta.getTitular().equals(this.titular)) {
             cantidadARetirar = cantidad * (1 + this.porcentajeCargoExtra);
-                        System.out.println("Cargo aplicado: " + cantidad*(1+cuenta.getPorcentajeCargoExtra()) + " (" +"%" + 100*cuenta.getPorcentajeCargoExtra() + ")" );
+            System.out.println("Cargo aplicado: " + cantidad * (1 + cuenta.getPorcentajeCargoExtra()) + " (" + 100 * cuenta.getPorcentajeCargoExtra() + "%" + ")");
 
         }
-        
+
         // Realizo la transferencia, retorna false si algo falla
         return this.retirarDinero(cantidadARetirar) && cuenta.depositarDinero(cantidad);
     }
-    
-         
 
 }
