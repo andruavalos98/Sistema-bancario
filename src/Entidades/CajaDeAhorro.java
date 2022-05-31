@@ -24,4 +24,15 @@ public class CajaDeAhorro extends Cuenta {
         return super.toString() + "\nTipo de Cuenta: Caja de Ahorro\n-------------";
     }
     
+    @Override
+    public boolean retirarDinero(int cantidad) {
+        if(this.saldo < cantidad) {
+            return false;
+        }
+        
+        this.saldo -= cantidad;
+        
+        return true;
+    }
+    
 }

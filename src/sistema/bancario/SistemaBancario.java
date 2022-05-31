@@ -23,9 +23,7 @@ public class SistemaBancario {
     public static void main(String[] args) {
         // TODO code application logic here
 
-//        Scanner sc = new Scanner(System.in);
         AccountManager manager = new AccountManager();
-        
         
         manager.getCuentas().add(new CajaDeAhorro(1, "Juan", 300.0));
         manager.getCuentas().add(new CajaDeAhorro(2, "Pedro", 300.0));
@@ -39,7 +37,42 @@ public class SistemaBancario {
 
         System.out.println(cuenta);
         System.out.println(otraCuenta);
+        
+        // Debería realizarse correctamente
+        if(cuenta.retirarDinero(200)) {
+            System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+        
+        // Debería fallar
+        if(cuenta.retirarDinero(200)) {
+            System.out.println("Se retiro dinero correctamente de la cuenta N° " + cuenta.getNroCuenta());
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
 
+        // Debería realizarse correctamente
+        if(otraCuenta.retirarDinero(200)) {
+            System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+        
+        // Debería realizarse correctamente, con un mensaje extra
+        if(otraCuenta.retirarDinero(200)) {
+            System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+        
+        // Debería fallar
+        if(otraCuenta.retirarDinero(200)) {
+            System.out.println("Se retiro dinero correctamente de la cuenta N° " + otraCuenta.getNroCuenta());
+        } else {    
+            System.out.println("Fondos insuficientes");
+        }
+                
 //        int op;
 //        String titular;
 //        Integer dni;

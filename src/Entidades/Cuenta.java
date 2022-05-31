@@ -9,7 +9,7 @@ package Entidades;
  *
  * @author andru
  */
-public class Cuenta {
+public abstract class Cuenta {
     
     protected Double saldo = 0.0;
     protected Integer nroCuenta;
@@ -61,5 +61,7 @@ public class Cuenta {
     public String toString() {
         return "-------------\nTitular: " + titular + "\nN° Cuenta: " + nroCuenta + "\nSaldo: " + saldo;
     }
+    
+    public abstract boolean retirarDinero(int cantidad);
     
 }
