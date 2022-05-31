@@ -9,23 +9,21 @@ package Entidades;
  *
  * @author andru
  */
-public abstract class Cuenta {
+public class Cuenta {
     
     protected Double saldo = 0.0;
     protected Integer nroCuenta;
-    protected String titular, tipoCuenta;
+    protected String titular;
     protected boolean alta = true;
 
     public Cuenta() {
     }
 
-    public Cuenta(Integer nroCuenta, String titular, boolean alta) {
+    public Cuenta(Integer nroCuenta, String titular, Double saldo) {
         this.nroCuenta = nroCuenta;
         this.titular = titular;
-        this.alta = alta;
+        this.saldo = saldo;
     }
-    
-    
 
     public Double getSaldo() {
         return saldo;
@@ -61,10 +59,7 @@ public abstract class Cuenta {
 
     @Override
     public String toString() {
-        System.out.println("-------------");
-        return "Titular: " + titular + "\nnroCuenta: " + nroCuenta + "\nSaldo :" + saldo + "\nalta :" + alta + "\n-------------";
+        return "-------------\nTitular: " + titular + "\nN° Cuenta: " + nroCuenta + "\nSaldo: " + saldo;
     }
-    
-    
     
 }

@@ -12,50 +12,16 @@ package Entidades;
 public class CajaDeAhorro extends Cuenta {
 
     public CajaDeAhorro() {
-    }
-
-    public String getTipoCuenta() {
-        return tipoCuenta;
-    }
-
-    public void setTipoCuenta(String tipoCuenta) {
-        this.tipoCuenta = tipoCuenta;
+        super();
     }
     
-    
-
-    public Double getSaldo() {
-        return saldo;
+    public CajaDeAhorro(Integer nroCuenta, String titular, Double saldo) {
+        super(nroCuenta, titular, saldo);
     }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
+   
+    @Override
+    public String toString(){
+        return super.toString() + "\nTipo de Cuenta: Caja de Ahorro\n-------------";
     }
-
-    public Integer getNroCuenta() {
-        return nroCuenta;
-    }
-
-    public void setNroCuenta(Integer nroCuenta) {
-        this.nroCuenta = nroCuenta;
-    }
-
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
-
-    public boolean isAlta() {
-        return alta;
-    }
-
-    public void setAlta(boolean alta) {
-        this.alta = alta;
-    }
-    
-    
     
 }

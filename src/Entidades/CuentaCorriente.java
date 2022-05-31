@@ -11,15 +11,22 @@ package Entidades;
  */
 public class CuentaCorriente extends Cuenta {
 
-    
-    Double saldoDescubierto = 0.0;
+    private Double saldoDescubierto = 0.0;
 
     public CuentaCorriente() {
+        super();
     }
 
-    public CuentaCorriente(Integer nroCuenta, String titular, boolean alta) {
-        super(nroCuenta, titular, alta);
+    public CuentaCorriente(Integer nroCuenta, String titular, Double saldo) {
+        super(nroCuenta, titular, saldo);
     }
+    
+    public CuentaCorriente(Integer nroCuenta, String titular, Double saldo, Double saldoDescubierto) {
+        super(nroCuenta, titular, saldo);
+        this.saldoDescubierto = saldoDescubierto;
+    }
+    
+    
 
     public Double getSaldoDescubierto() {
         return saldoDescubierto;
@@ -28,51 +35,10 @@ public class CuentaCorriente extends Cuenta {
     public void setSaldoDescubierto(Double saldoDescubierto) {
         this.saldoDescubierto = saldoDescubierto;
     }
-
-    public Double getSaldo() {
-        return saldo;
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\nSaldo Descubierto: " + saldoDescubierto + "\nTipo de Cuenta: Cuenta Corriente\n-------------";
     }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
-
-    public Integer getNroCuenta() {
-        return nroCuenta;
-    }
-
-    public void setNroCuenta(Integer nroCuenta) {
-        this.nroCuenta = nroCuenta;
-    }
-
- 
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
-
-    public String getTipoCuenta() {
-        return tipoCuenta;
-    }
-
-    public void setTipoCuenta(String tipoCuenta) {
-        this.tipoCuenta = tipoCuenta;
-    }
-
-    public boolean isAlta() {
-        return alta;
-    }
-
-    public void setAlta(boolean alta) {
-        this.alta = alta;
-    }
-
-   
-   
-
-  
-
+    
 }

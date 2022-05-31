@@ -6,38 +6,24 @@
 package Entidades;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
  * @author andru
  */
 public class AccountManager {
-    HashMap<Integer, CuentaCorriente> ctasCorrientes = new HashMap();
-    HashMap<Integer, CajaDeAhorro> cajasDeAhorro = new HashMap();
 
-    public HashMap<Integer, CuentaCorriente> getCtasCorrientes() {
-        return ctasCorrientes;
+    private final ArrayList<Cuenta> _cuentas = new ArrayList();
+
+    public ArrayList<Cuenta> getCuentas() {
+        return _cuentas;
     }
 
-    public void setCtasCorrientes(HashMap<Integer, CuentaCorriente> ctasCorrientes) {
-        this.ctasCorrientes = ctasCorrientes;
+    public Cuenta obtenerCuentaPorNroCuenta(int numero) {
+        return _cuentas.stream()
+                .filter(cuenta -> cuenta.getNroCuenta().equals(numero))
+                .findFirst()
+                .get();
     }
 
-    public HashMap<Integer, CajaDeAhorro> getCajasDeAhorro() {
-        return cajasDeAhorro;
-    }
-
-    public void setCajasDeAhorro(HashMap<Integer, CajaDeAhorro> cajasDeAhorro) {
-        this.cajasDeAhorro = cajasDeAhorro;
-    }
-    
-    
-
-   
-    
-    
-    
-   
-    
 }
